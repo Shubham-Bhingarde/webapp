@@ -27,7 +27,12 @@ pipeline {
 //    }
      stage ('SCAN for DAST') {
      steps {
-     sh 'docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.52.128:8080/WebApp -r report.html'
+     sh '''#!/bin/bash
+
+command="docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://192.168.52.128:8080/WebApp -r report.html"
+
+eval $command
+'''
        }
    }
     }
