@@ -13,7 +13,7 @@ pipeline {
                 cleanWs()
                 sh '''
                     docker run --user $(id -u) -v ${WORKSPACE}:${WORKSPACE}:rw \
-                    -e DASTARDLY_TARGET_URL=https://ecgc.cdacmumbai.in/epms/  \
+                    -e DASTARDLY_TARGET_URL=http://cdacmumbai.in/  \
                     -e DASTARDLY_OUTPUT_FILE=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
